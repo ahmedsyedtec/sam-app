@@ -1,3 +1,5 @@
+name: SAM Python lambda
+
 on:
   push:
     branches:
