@@ -2,7 +2,7 @@ import json
 import boto3
 import os
 
-USER = os.environ.get("USER", "dev")
+USER = os.environ.get("USER_ENV", "dev")
 
 
 def get_list_from_db():
