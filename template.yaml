@@ -3,9 +3,6 @@ Transform: AWS::Serverless-2016-10-31
 Description: >
   sam-app
 
-  Sample SAM Template for sam-app
-
-# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
     Timeout: 3
@@ -14,11 +11,16 @@ Globals:
     Architectures:
       - x86_64
 
+Parameters:
+  User:
+    Type: String
+    Default: dev
+
 Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: newfun
+      FunctionName: !Sub "${User}-GreetPost"
       Handler: app.lambda_handler
       Policies:
         DynamoDBCrudPolicy:
@@ -33,7 +35,7 @@ Resources:
   GreetListFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: greetfunction
+      FunctionName: !Sub "${User}-GreetGet"
       Handler: get_greets.lambda_handler
       Policies:
         DynamoDBCrudPolicy:
@@ -49,7 +51,7 @@ Resources:
   DynamoDBTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
-      TableName: UserData
+      TableName: !Sub "${User}-UserData"
 
 Outputs:
   HelloWorldApi:

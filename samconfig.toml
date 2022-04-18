@@ -2,10 +2,10 @@ version = 0.1
 [default]
 [default.deploy]
 [default.deploy.parameters]
-stack_name = "first"
-s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-n5234blcgu98"
-s3_prefix = "first"
+stack_name = "dev-stack"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-acloudguru"
+s3_prefix = "dev"
 region = "us-east-1"
-confirm_changeset = true
+confirm_changeset = false
 capabilities = "CAPABILITY_IAM"
 image_repositories = []

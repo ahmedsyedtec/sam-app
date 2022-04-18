@@ -1,14 +1,14 @@
 import json
 import boto3
+import os
+
+USER = os.environ.get("USER", "dev")
 
 
-# if 'Items' in response:
-#     items = [item['id']['S'] for item in response['Items']]
-#     print(items)
 def hello_param(payload):
     greeting = json.loads(payload).get("greetPerson")
     dynamodb_client = boto3.client('dynamodb')
-    dynamodb_client.put_item(TableName='UserData', Item={'id': {'S': greeting}})
+    dynamodb_client.put_item(TableName=f'{USER}-UserData', Item={'id': {'S': greeting}})
     return {
         "statusCode": 200,
         "body": json.dumps({
